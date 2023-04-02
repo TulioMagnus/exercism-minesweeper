@@ -18,13 +18,14 @@ class Board
     raise ArgumentError unless valid_structure?
     raise ArgumentError unless valid_board?
     raise ArgumentError unless valid_characters?
+
     process_board
   end
 
   private
 
   def valid_structure?
-    @board.all? { |a| a.size == @board.first.size }        
+    @board.all? { |a| a.size == @board.first.size }
   end
 
   def valid_board?
