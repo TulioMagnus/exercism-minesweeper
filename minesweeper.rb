@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
-
 class Board
   BOARD_FIELDS = ['|', '+', '-', '*'].freeze
   HEADER_FIELDS = ['+', '-'].freeze
