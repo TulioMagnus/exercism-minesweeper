@@ -13,26 +13,22 @@ class Board
   end
 
   def transform
-    raise ArgumentError unless valid_structure?
     raise ArgumentError unless valid_board?
-    raise ArgumentError unless valid_characters?
 
     process_board
   end
 
   private
 
-  def valid_structure?
-    @board.all? { |a| a.size == @board.first.size }
-  end
-
   def valid_board?
-    header = @board[0] + @board[-1] - HEADER_FIELDS
-    body = @board[1..-2].all? { |a| a.first == '|' && a.last == a.first }
-    header.empty? && body
-  end
+    return false unless @board.all? { |a| a.size == @board.first.size }
 
-  def valid_characters?
+    header = @board[0] + @board[-1] - HEADER_FIELDS
+    return false unless header.empty?
+
+    body = @board[1..-2].all? { |a| a.first == '|' && a.last == a.first }
+    return false unless body
+
     reduced_board = @board.flatten - BOARD_FIELDS - [' ']
     reduced_board.empty?
   end
